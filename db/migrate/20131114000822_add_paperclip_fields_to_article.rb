@@ -1,0 +1,11 @@
+class AddPaperclipFieldsToArticle < ActiveRecord::Migration
+  def change
+    #add_column :articles, :image_file_name, :string
+    #add_column :articles, :image_content_type, :string
+    #add_column :articles, :image_file_size, :integer
+    #add_column :articles, :image_uploaded_at, :datetime
+
+    # the same thing but using paperclip helper
+    add_attachment :articles, :image
+  end
+end
