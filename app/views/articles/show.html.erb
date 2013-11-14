@@ -18,7 +18,8 @@
 
 <%= link_to '<< Back to article list', articles_path %>
 
-<%= link_to 'X Delete', article_path(@article), method: :delete,
-            data: { confirm: "Are you sure?" } %>
-
-<%= link_to '|| Edit', edit_article_path(@article) %>
+<% if logged_in? %>
+    <%= link_to 'X Delete', article_path(@article), method: :delete,
+                data: { confirm: "Are you sure?" } %>
+    <%= link_to '|| Edit', edit_article_path(@article) %>
+<% end %>

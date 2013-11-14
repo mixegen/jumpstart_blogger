@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
+  before_filter :require_login, except: [:index, :show]
+  before_filter :require_author, only: [:destroy, :edit]
+
   def index
     @articles = Article.all
   end
@@ -17,6 +20,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.author = current_user
     @article.save
     flash.notice = "Article '#{@article.title}' created!"
 
@@ -43,4 +47,13 @@ class ArticlesController < ApplicationController
 
     redirect_to article_path(@article)
   end
+
+  private
+
+    def require_author
+      @article = Article.find(params[:id])
+      unless @article.author == current_user
+        redirect_to article_path(@article), notice: 'Author required!'
+      end
+    end
 end

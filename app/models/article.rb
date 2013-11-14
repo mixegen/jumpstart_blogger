@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   has_many :comments
   has_many :taggings
   has_many :tags, through: :taggings
+  belongs_to :author
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
 
