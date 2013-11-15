@@ -1,16 +1,22 @@
-<h1><%= @article.title %></h1>
-<p>
-  Tags:
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
+<article>
+  <h1><%= @article.title %></h1>
+  <p class="tags">
+    Tags:
+    <% @article.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
+  </p>
+  <% if @article.image.exists? %>
+      <p><%= image_tag @article.image.url(:thumb) %></p>
   <% end %>
-</p>
-<% if @article.image.exists? %>
-    <p><%= image_tag @article.image.url(:thumb) %></p>
-<% end %>
-<p><%= @article.body %></p>
+  <div class="body"><%= @article.body %></div>
+  <hr>
+  <span><i>Viewed (<%= @article.view_count %>)</i></span>
+</article>
 
-<h3>Comments (<%= @article.comments.size %>)</h3>
+<hr>
+
+<h3 class="comments">Comments (<%= @article.comments.size %>)</h3>
 
 <%= render partial: 'articles/comment', collection: @article.comments %>
 

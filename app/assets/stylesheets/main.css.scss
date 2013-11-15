@@ -1,0 +1,153 @@
+@import url(http://fonts.googleapis.com/css?family=Average+Sans);
+
+$color_salad: #b1f100;
+$color_light_green: #f9fecc;
+
+
+header {
+  width: 100%;
+  background: #333;
+  margin: 0;
+  overflow: auto;
+
+  #logo {
+    width: 100px;
+    float: left;
+    padding: 5px 15px;
+    font-size: 35px;
+    color: $color_salad;
+  }
+
+  nav {
+    float: left;
+    ul {
+      li {
+        display: inline;
+        a {
+          color: #ddd;
+          text-decoration: none;
+          padding: 0 15px;
+
+          &:hover {
+            color: $color_salad;
+          }
+        }
+      }
+    }
+  }
+
+  #controls {
+    float: right;
+    color: #999;
+    padding: 8px 0;
+    display: table-cell;
+    vertical-align: middle;
+
+    a {
+      color: orange;
+      padding-left: 5px;
+    }
+  }
+}
+
+#content {
+  width: 600px;
+  margin: 0 auto;
+
+  form.article, form.comment {
+    input[type=text], textarea {
+      width: 100%;
+    }
+  }
+
+  ul#articles {
+    li {
+      list-style: none;
+      border-bottom: 1px dashed #ddd;
+      padding: 5px 0;
+
+      a {
+        color: #333;
+        text-decoration: none;
+        font: {
+          family: 'Average Sans', sans-serif;
+          size: 30px;
+        }
+      }
+
+      .tags {
+        color: #ccc;
+        font-size: 12px;
+      }
+    }
+  }
+
+  article {
+    h1 {
+      color: #333;
+      font: {
+        family: 'Average Sans', sans-serif;
+        size: 30px;
+      }
+    }
+    p.tags {
+      color: #ccc;
+      font-size: 12px;
+      font-style: italic;
+    }
+    div.body {
+      color: #222;
+      font-family: Verdana;
+      text-align: justify;
+
+    }
+  }
+
+  .comments {
+    font-size: 12px;
+  }
+
+  div.comment {
+    background: $color_light_green;
+    padding: 15px;
+    border-radius: 10px;
+
+    h4 {
+      font-size: 15px;
+      color: #888;
+      margin: 0;
+      padding: 0;
+      font-style: italic;
+    }
+    .date {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}
+
+aside {
+  display: block;
+  position: absolute;
+  width: 170px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  top: 100px;
+  right: 20px;
+  padding: 15px;
+
+  h1 {
+    font-size: 15px;
+    color: #ccc;
+  }
+
+  ul {
+    li {
+      list-style: none;
+      a {
+        color: $color_salad;
+        text-decoration: none;
+      }
+    }
+  }
+}

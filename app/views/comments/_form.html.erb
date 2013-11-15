@@ -1,15 +1,13 @@
 <h3>Post a comment</h3>
 
-<%= form_for [ @article, @comment ] do |f| %>
+<%= form_for([ @article, @comment ], html: {class: 'pure-form comment'}) do |f| %>
     <p>
-      <%= f.label :author_name, 'Your name' %>
-      <%= f.text_field :author_name %>
+      <%= f.text_field :author_name, placeholder: 'Your name' %>
     </p>
     <p>
-      <%= f.label :body, 'Your comment' %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, placeholder: 'Your comment' %>
     </p>
     <p>
-      <%= f.submit 'Submit' %>
+      <%= f.submit 'Submit', class: 'pure-button' %>
     </p>
 <% end %>
