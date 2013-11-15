@@ -1,0 +1,7 @@
+<h1>Archive</h1>
+
+<ul>
+  <% @months.each do |number, name| %>
+    <li><%= link_to name, articles_path(month: number) %></li>
+  <% end %>
+</ul>

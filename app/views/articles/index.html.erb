@@ -1,9 +1,16 @@
-<h1>All articles</h1>
+<% if @articles.empty? %>
+    <h3>No articles</h3>
+<% end %>
 
 <ul id="articles">
   <% @articles.each do |article| %>
     <li>
       <%= link_to article.title, article_path(article) %>
+      <span class="tags"> #
+        <% article.tags.each do |tag| %>
+            <%= tag.name %>
+        <% end %>
+      </span>
     </li>
   <% end %>
 </ul>

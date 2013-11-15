@@ -1,0 +1,20 @@
+<header>
+  <div id="logo">Blog</div>
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Tags', tags_path %></li>
+      <li><%= link_to 'Authors', authors_path %></li>
+      <li><%= link_to 'Archive', archive_path %></li>
+      <li><%= link_to 'Popular', top_path %></li>
+    </ul>
+  </nav>
+  <div id="controls">
+    <% if logged_in? %>
+        <%= link_to current_user.username, author_path(current_user) %>
+        <%= link_to image_tag('https://cdn3.iconfinder.com/data/icons/UltimateGnome/24x24/apps/gnome-session-logout.png'), logout_path %>
+    <% else %>
+        <%= link_to 'Log in', login_path %>
+    <% end %>
+  </div>
+</header>

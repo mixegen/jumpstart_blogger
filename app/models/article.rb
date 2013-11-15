@@ -19,4 +19,21 @@ class Article < ActiveRecord::Base
     new_or_found_tags = tags_names.collect {|name| Tag.find_or_create_by(name: name) }
     self.tags = new_or_found_tags
   end
+
+  def viewed!
+    increment(:view_count)
+    save
+  end
+
+  def self.find_by_month(month_number)
+    where('extract(month from created_at) = ?', month_number)
+  end
+
+  def self.months_range
+    pairs = all.map do |article|
+      created_at = article.created_at.to_date
+      [created_at.month, created_at.strftime('%B')]
+    end.uniq
+    Hash[pairs]
+  end
 end

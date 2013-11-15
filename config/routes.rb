@@ -12,5 +12,7 @@ Blogger::Application.routes.draw do
   resources :author_sessions, only: [:new, :create, :destroy]
   get 'login' => 'author_sessions#new'
   get 'logout' => 'author_sessions#destroy'
+  get 'archive' => 'articles#archive'
+  get 'top' => 'articles#top'
 
 end

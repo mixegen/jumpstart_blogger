@@ -1,18 +1,16 @@
 <h1>Login</h1>
 
-<%= form_tag author_sessions_path, method: :post do %>
+<%= form_tag author_sessions_path, method: :post, class: 'pure-form pure-form-stacked' do %>
     <div class="field">
-      <%= label_tag :username %>
-      <%= text_field_tag :username %>
+      <%= text_field_tag :username, nil, placeholder: 'Username' %>
       <br>
     </div>
     <div class="field">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
+      <%= password_field_tag :password, nil, placeholder: 'Password' %>
       <br>
     </div>
     <div class="actions">
-      <%= submit_tag 'Login' %>
+      <%= submit_tag 'Login', class:'pure-button' %>
     </div>
 <% end %>
 

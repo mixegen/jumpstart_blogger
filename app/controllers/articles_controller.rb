@@ -5,12 +5,17 @@ class ArticlesController < ApplicationController
   before_filter :require_author, only: [:destroy, :edit]
 
   def index
-    @articles = Article.all
+    if params.has_key?(:month)
+      @articles = Article.find_by_month(params[:month])
+    else
+      @articles = Article.all
+    end
     @pages = Page.all
   end
 
   def show
     @article = Article.find(params[:id])
+    @article.viewed!
     @comment = Comment.new
     @comment.article_id = @article.id
   end
@@ -47,6 +52,15 @@ class ArticlesController < ApplicationController
     flash.notice = "Article '#{@article.title}' updated!"
 
     redirect_to article_path(@article)
+  end
+
+  def archive
+    @months = Article.months_range
+  end
+
+  def top
+    @articles = Article.all.order('view_count DESC')[0, 3]
+    render 'articles/index'
   end
 
   private
